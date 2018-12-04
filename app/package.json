@@ -4,7 +4,7 @@
   "description": "Client only React Starter App",
   "author": "atomicjolt",
   "license": "MIT",
-  "homepage": "https://higgsch.github.io/CS5890-Project",
+  "homepage": "https://dittonjs.github.io/violent-crime",
   "scripts": {
     "test": "./tests.sh",
     "test_debug": "./tests_debug.sh",
