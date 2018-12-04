@@ -38,7 +38,9 @@ export default class ParallelCoordinates extends React.Component {
     const mergedData = _.map(groups, data => _.merge({}, ...data));
 
     const rawDisplayData = _.map(mergedData, data => {
-      const displayObj = {}
+      const displayObj = {
+        StateID: data.StateID
+      }
       _.each(
         categoriesWithData,
         category => {
@@ -50,7 +52,7 @@ export default class ParallelCoordinates extends React.Component {
     })
 
     const displayData = _.filter(rawDisplayData, d => {
-      return _.keys(d).length == categoriesWithData.length
+      return _.keys(d).length == categoriesWithData.length + 1
     })
 
     const maxCrimeRate = max(mergedData, d => d.ViolentCrimeRate);
@@ -68,6 +70,7 @@ export default class ParallelCoordinates extends React.Component {
       acc.maxData[cat.label] = adapter.getMax();
       return acc;
     }, {minData: {isEdge: true}, maxData: {isEdge: true}})
+
     return [minData, ...displayData, maxData]
   }
 
@@ -78,7 +81,7 @@ export default class ParallelCoordinates extends React.Component {
 
     this.pcoords
       .data(this.data)
-      .hideAxis(['isEdge'])
+      .hideAxis(['isEdge', 'StateID'])
       .composite("darker")
       .color(d => {
         if (d.isEdge) return 'transparent';

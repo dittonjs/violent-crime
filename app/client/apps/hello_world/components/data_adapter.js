@@ -35,10 +35,10 @@ export class DataAdapter {
   }
 
   getMin(){
-    return _.minBy(this.data, d => d[this.primaryKey()])[this.primaryKey()]
+    return _.minBy(_.filter(this.data, d => d.StateID !== 'UnitedStatesTotal'), d => d[this.primaryKey()])[this.primaryKey()]
   }
   getMax(){
-    return _.maxBy(this.data, d => d[this.primaryKey()])[this.primaryKey()]
+    return _.maxBy(_.filter(this.data, d => d.StateID !== 'UnitedStatesTotal'), d => d[this.primaryKey()])[this.primaryKey()]
   }
 };
 
