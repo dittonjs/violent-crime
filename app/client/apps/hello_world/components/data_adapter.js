@@ -34,11 +34,11 @@ export class DataAdapter {
     }
   }
 
-  getMin(){ 
-    return _.minBy(this.data, d => d[this.primaryKey()])
+  getMin(){
+    return _.minBy(this.data, d => d[this.primaryKey()])[this.primaryKey()]
   }
-  getMax(){ 
-    return _.maxBy(this.data, d => d[this.primaryKey()])
+  getMax(){
+    return _.maxBy(this.data, d => d[this.primaryKey()])[this.primaryKey()]
   }
 };
 
@@ -88,10 +88,10 @@ export class BirthRateDataAdapter extends DataAdapter{
       "United States", "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
 
     const all = _.flatMap(allStates, state => {
-    
+
       return _.map(birthData, d => {
         return Object.assign({}, d, { StateID: state })
-      }) 
+      })
     })
 
     super(all)

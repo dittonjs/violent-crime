@@ -30,13 +30,14 @@ export default class StackedBarChart extends React.Component {
     }
   }
 
+
   getInfo() {
     const width = 775;
     const height = 370;
     const xScale = scaleLinear()
       .domain([0, 50])
       .range([0, width - 60]);
-    const maxCrimes = max(this.props.data, d => _.sum(_.map(KEYS, key => d[key+"Rate"])));
+    const maxCrimes = max(this.props.data.slice(0,51), d => _.sum(_.map(KEYS, key => d[key+"Rate"])));
     const stateWidth = ((width - 40) / 51) - 2
     const heightPerIncident = (height - 100) / 3300;
     return {heightPerIncident, stateWidth, maxCrimes, xScale, height, width}
@@ -48,8 +49,8 @@ export default class StackedBarChart extends React.Component {
     const texts = _.map(KEYS, (key, i) => {
       return (
         <React.Fragment>
-          <text x={(((width - 150) / KEYS.length) * i) + 150} y={15}>{LABELS[i]}: {this.state.hoveredData[key]}</text>
-          <text x={(((width - 150) / KEYS.length) * i) + 150} y={30}>{LABELS[i]}: {this.state.hoveredData[key+"Rate"]}</text>
+          <text x={(((width - 150) / KEYS.length) * i) + 150} y={15}>{LABELS[i]}: {this.state.hoveredData[key] || this.state.hoveredData["LegacyRape"]}</text>
+          <text x={(((width - 150) / KEYS.length) * i) + 150} y={30}>{LABELS[i]}: {this.state.hoveredData[key+"Rate"] || this.state.hoveredData["LegacyRapeRate"]}</text>
         </React.Fragment>
       )
     });
@@ -100,9 +101,10 @@ export default class StackedBarChart extends React.Component {
   setHoveredData = data => this.setState({ hoveredData: data })
 
   render() {
+    if (!this.props.selectedYear) return <div className="paper"><h2>Select A Year to see stats for that year</h2></div>;
 
     const {heightPerIncident, stateWidth, maxCrimes, xScale, height, width} = this.getInfo();
-    const rects = _.map(this.props.data, (d,i) => {
+    const rects = _.map(this.props.data.slice(0,51), (d,i) => {
       let totalHeight = 0;
       return _.map(KEYS, (key, j) => {
         const rectHeight = heightPerIncident * (d[key+"Rate"] || d["LegacyRapeRate"]);
@@ -125,9 +127,10 @@ export default class StackedBarChart extends React.Component {
       })
     })
 
-    const labels = _.map(this.props.data, (d, i) => (
+    const labels = _.map(this.props.data.slice(0,51), (d, i) => (
       <text key={`${d.StateID}_label`} x={40 + xScale(i)} y={height - 10} style={{fontSize: '8px'}}>{d.StateID}</text>
     ))
+
 
     return (
       <div className="paper">

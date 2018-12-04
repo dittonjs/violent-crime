@@ -16,7 +16,8 @@ export default class Home extends React.Component {
     super();
     this.state = {
       selectedYear: null,
-      selectedStates: []
+      selectedStates: [],
+      firstSelected: null,
     }
   }
 
@@ -24,19 +25,28 @@ export default class Home extends React.Component {
     if(selectedYear == this.state.selectedYear) {
 
       this.setState({ selectedYear: null })
-      return 
+      if (!_.isEmpty(this.state.selectedStates)) {
+        this.setState({ firstSelected: null });
+      }
+      return
     }
-
+    if (!this.state.firstSelected) {
+      this.setState({firstSelected: 'year'})
+    }
     this.setState({ selectedYear })
   }
 
   changeState = selectedState => {
     if(selectedState == this.getState()) {
-
+      if (!this.state.selectedYear) {
+        this.setState({ firstSelected: null });
+      }
       this.setState({ selectedStates: [] })
-      return 
+      return
     }
-
+    if (_.isEmpty(this.state.selectedStates)) {
+      this.setState({firstSelected: 'state'})
+    }
     this.setState({ selectedStates: [selectedState] })
   }
 
@@ -58,7 +68,6 @@ export default class Home extends React.Component {
     const birthData = new BirthRateDataAdapter()
       .getData(this.getState(), this.state.selectedYear)
 
-
     return (
       <div style={{margin: '60px auto', padding: '10px', width: "1600px" }}>
         <TitleBar />
@@ -68,7 +77,7 @@ export default class Home extends React.Component {
               <ParallelCoordinates
                 data={
                   {
-                    violentCrime: violentCrimeData,
+                    violentCrime: _.filter(violentCrimeData, d => d.StateID !== "UnitedStatesTotal"),
                     unemployment: unemploymentData,
                     medianIncome: medianIncomeData,
                     birthData
@@ -76,15 +85,17 @@ export default class Home extends React.Component {
                 }
                 width={1500}
                 height={600}
+                firstSelected={this.state.firstSelected}
               />
             </div>
             <div style={{ marginTop: '10px' }}>
+              <StackedBarChart data={violentCrimeData} selectedYear={this.state.selectedYear} selectedStates={this.state.selectedStates}/>
             </div>
           </div>
           <div className="col-md-6">
-            <Cartogram 
-              data={STATE_AGGREGATE_DATA} 
-              scale={60} 
+            <Cartogram
+              data={STATE_AGGREGATE_DATA}
+              scale={60}
               selectedYear={this.state.selectedYear}
               changeYear={this.changeYear}
               selectedState={this.getState()}
