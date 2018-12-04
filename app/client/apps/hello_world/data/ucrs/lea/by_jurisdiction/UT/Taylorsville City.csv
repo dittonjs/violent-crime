@@ -1,0 +1,8 @@
+Year,Months,Population,ViolentCrimeTotal,MurderAndNonnegligentManslaughter,LegacyRape,RevisedRape,Robbery,AggravatedAssault,PropertyCrimeTotal,Burglary,LarcenyTheft,MotorVehicleTheft,ViolentCrimeRate,MurderAndNonnegligentManslaughterRate,LegacyRapeRate,RevisedRapeRate,RobberyRate,AggravatedAssaultRate,PropertyCrimeRate,BurglaryRate,LarcenyTheftRate,MotorVehicleTheftRate
+2005,9,60140,111,2,23,,17,69,2431,326,1812,293,,,,,,,,,,
+2006,12,59899,143,1,23,,34,85,2578,344,1909,325,238.7,1.7,38.4,,56.8,141.9,4303.9,574.3,3187.0,542.6
+2007,12,57944,232,3,34,,61,134,2906,505,2065,336,400.4,5.2,58.7,,105.3,231.3,5015.2,871.5,3563.8,579.9
+2008,12,58600,202,1,23,,71,107,2943,446,2199,298,344.7,1.7,39.2,,121.2,182.6,5022.2,761.1,3752.6,508.5
+2009,12,58472,192,1,25,,51,115,3225,491,2433,301,328.4,1.7,42.8,,87.2,196.7,5515.5,839.7,4161.0,514.8
+2010,12,58652,223,2,25,,66,130,2524,355,1944,225,380.2,3.4,42.6,,112.5,221.6,4303.3,605.3,3314.5,383.6
+2011,12,59784,211,2,30,,54,125,2467,322,1863,282,352.9,3.3,50.2,,90.3,209.1,4126.5,538.6,3116.2,471.7

@@ -1,0 +1,8 @@
+legacy rape = Forcible Rape
+nonlegacy rape = new definition : empty until 2013 (Do not use)
+Rates are per 100,000 population
+1995 Federal Building bombing values are included
+9/11 values are not included
+
+Murder, Rape, Robbery, and assault are violent crime
+Burglary, Larceny, and theft are property crime

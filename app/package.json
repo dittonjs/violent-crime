@@ -1,0 +1,47 @@
+{
+  "name": "react_client_starter_app",
+  "version": "1.0.0",
+  "description": "Client only React Starter App",
+  "author": "atomicjolt",
+  "license": "MIT",
+  "homepage": "https://higgsch.github.io/CS5890-Project",
+  "scripts": {
+    "test": "./tests.sh",
+    "test_debug": "./tests_debug.sh",
+    "watch": "cd ./client && for dir in apps/*; do cd \"$dir\" || continue; yarn watch; cd ..; cd ..; done",
+    "hot": "atomic-webpack-dev --configDir=client/config --hot",
+    "dev": "atomic-webpack-dev --configDir=client/config",
+    "hot_pack": "atomic-webpack-dev --hotPack --configDir=client/config",
+    "hot_lint": "atomic-webpack-dev --hotPack --lint --configDir=client/config",
+    "hot_debug": "node --nolazy --inspect-brk=9229 ./node_modules/atomic-reactor/webpack.hot.js --configDir=client/config",
+    "hot_pack_debug": "node --nolazy --inspect-brk=9229 ./node_modules/atomic-reactor/webpack.hot.js --hotPack --configDir=client/config",
+    "live": "atomic-webpack-server --configDir=client/config",
+    "build_dev": "atomic-webpack-build --configDir=client/config",
+    "build_dev_pack": "atomic-webpack-build --onlyPack --configDir=client/config",
+    "build": "atomic-webpack-build --release --configDir=client/config",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build/prod/hello_world",
+    "build_pack": "atomic-webpack-build --release --onlyPack --configDir=client/config",
+    "ball": "atomic-webpack-build --release --configDir=client/config && ./node_modules/s3-website/s3-website.js create",
+    "release": "atomic-webpack-build --release --configDir=client/config && ./node_modules/s3-website/s3-website.js deploy",
+    "lint": "cd ./client && eslint js",
+    "nuke": "rm -rf node_modules && cd ./client && yarn nuke",
+    "inspect_reactor": "\"${EDITOR:-vi}\" ./node_modules/atomic-reactor",
+    "inspect_fuel": "\"${EDITOR:-vi}\" ./node_modules/atomic-fuel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atomicjolt/react_client_starter_app"
+  },
+  "keywords": [
+    "react"
+  ],
+  "dependencies": {
+    "del": "^3.0.0"
+  },
+  "devDependencies": {
+    "atomic-reactor": "^3.2.3"
+  },
+  "private": true,
+  "workspaces": ["client", "client/apps/*"]
+}

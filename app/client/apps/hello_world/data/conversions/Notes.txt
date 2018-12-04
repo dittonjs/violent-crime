@@ -1,0 +1,8 @@
+StateNameAndCodes.csv came from https://www.census.gov/geo/reference/ansi_statetables.html
+UT_lea.csv came from https://www.policeone.com/law-enforcement-directory/search-by-state/utah/?page=5
+US_lea.csv came from https://www.policeone.com/law-enforcement-directory/search/page-478/
+
+uszipsv1.4.csv requires a backlink to https://simplemaps.com/data/us-zips
+uscitiesv1.4.csv requires a backlink to https://simplemaps.com/data/us-cities
+
+These sites contain the meta data as well.
