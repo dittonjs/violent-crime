@@ -11,4 +11,4 @@ The data is located in `app/client/apps/hello_world/data` and there is a lot of 
 ## Links
 [Demo](https://youtu.be/dJrNNWcr6kY)
 
-[Website](dittonjs.github.io/violent-crime)
+[Website](http://dittonjs.github.io/violent-crime)
