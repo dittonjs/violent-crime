@@ -10,7 +10,8 @@ export default class TitleBar extends React.Component {
       position: 'fixed',
       top: '0',
       left: '0',
-      right: '0'
+      right: '0',
+      zIndex: '99999999'
     }
   });
 
